@@ -177,7 +177,7 @@ const ViewItems: React.FC = () => {
               : 'space-y-4 sm:space-y-6'
           }>
             {filteredItems.map((item) => (
-              <ItemCard key={item.id} item={item} />
+              <ItemCard key={item.id} item={item} list={viewMode === 'list'} />
             ))}
           </div>
         )}
