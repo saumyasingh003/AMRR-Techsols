@@ -17,12 +17,12 @@ const AddItem: React.FC = () => {
   });
   
   const [showSuccess, setShowSuccess] = useState(false);
-  const [errors, setErrors] = useState<Partial<ItemFormData>>({});
+  const [errors, setErrors] = useState<Record<string, string | undefined>>({});
 
   const itemTypes: ItemType[] = ['Shirt', 'Pant', 'Shoes', 'Sports Gear', 'Accessories', 'Other'];
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<ItemFormData> = {};
+    const newErrors: Record<string, string | undefined> = {};
     
     if (!formData.name.trim()) {
       newErrors.name = 'Item name is required';
@@ -44,7 +44,7 @@ const AddItem: React.FC = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    if (errors[name as keyof ItemFormData]) {
+    if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
